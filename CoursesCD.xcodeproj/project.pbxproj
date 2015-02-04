@@ -17,6 +17,9 @@
 		184846511A82AC2A0069EDD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184846501A82AC2A0069EDD5 /* User.swift */; };
 		184846531A82AC2B0069EDD5 /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184846521A82AC2B0069EDD5 /* Membership.swift */; };
 		184846551A82AC2B0069EDD5 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184846541A82AC2B0069EDD5 /* Organization.swift */; };
+		184846571A82B4390069EDD5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184846561A82B4390069EDD5 /* Profile.swift */; };
+		184846591A82B5510069EDD5 /* mzingabee110.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184846581A82B5510069EDD5 /* mzingabee110.jpg */; };
+		1848465B1A82BB370069EDD5 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848465A1A82BB370069EDD5 /* ProfileVC.swift */; };
 		18E54C511A717AC400C8A8FC /* APIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E54C501A717AC400C8A8FC /* APIFetcher.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		184846501A82AC2A0069EDD5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Base.lproj/Data/User.swift; sourceTree = "<group>"; };
 		184846521A82AC2B0069EDD5 /* Membership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Membership.swift; path = Base.lproj/Data/Membership.swift; sourceTree = "<group>"; };
 		184846541A82AC2B0069EDD5 /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Organization.swift; path = Base.lproj/Data/Organization.swift; sourceTree = "<group>"; };
+		184846561A82B4390069EDD5 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		184846581A82B5510069EDD5 /* mzingabee110.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mzingabee110.jpg; sourceTree = "<group>"; };
+		1848465A1A82BB370069EDD5 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		18E54C501A717AC400C8A8FC /* APIFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIFetcher.swift; path = Base.lproj/APIFetcher/APIFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +75,7 @@
 		182A36FC1A714C7F00222733 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1848465A1A82BB370069EDD5 /* ProfileVC.swift */,
 				182A36FA1A714C7A00222733 /* AuthVC.swift */,
 			);
 			name = Controllers;
@@ -98,6 +105,8 @@
 				182A36FC1A714C7F00222733 /* Controllers */,
 				183547B41A702BD000940B64 /* AppDelegate.swift */,
 				183547BB1A702BD000940B64 /* Main.storyboard */,
+				184846581A82B5510069EDD5 /* mzingabee110.jpg */,
+				184846561A82B4390069EDD5 /* Profile.swift */,
 				18E54C521A717AC800C8A8FC /* APIFetcher */,
 				183547BE1A702BD000940B64 /* Images.xcassets */,
 				183547C01A702BD000940B64 /* LaunchScreen.xib */,
@@ -234,6 +243,7 @@
 				183547BD1A702BD000940B64 /* Main.storyboard in Resources */,
 				183547C21A702BD000940B64 /* LaunchScreen.xib in Resources */,
 				183547BF1A702BD000940B64 /* Images.xcassets in Resources */,
+				184846591A82B5510069EDD5 /* mzingabee110.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				182A36FB1A714C7A00222733 /* AuthVC.swift in Sources */,
+				184846571A82B4390069EDD5 /* Profile.swift in Sources */,
 				183547B51A702BD000940B64 /* AppDelegate.swift in Sources */,
+				1848465B1A82BB370069EDD5 /* ProfileVC.swift in Sources */,
 				183547B81A702BD000940B64 /* CoursesCD.xcdatamodeld in Sources */,
 				184846511A82AC2A0069EDD5 /* User.swift in Sources */,
 				184846551A82AC2B0069EDD5 /* Organization.swift in Sources */,

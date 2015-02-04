@@ -171,11 +171,17 @@ import CoreData
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        //IF this is the Profile button segue, pass the userId
+        if segue.identifier == "Profile" {
+            let pvc = segue.destinationViewController as ProfileVC
+            pvc.title = "Profile"
+            println("Segueing to Profile")
+        }
     }
-    */
+
 
 }
