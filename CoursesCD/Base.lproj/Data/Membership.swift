@@ -2,20 +2,20 @@
 //  Membership.swift
 //  CoursesCD
 //
-//  Created by Joan Coyne on 1/22/15.
+//  Created by Joan Coyne on 2/4/15.
 //  Copyright (c) 2015 Mzinga. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-@objc(Membership) class Membership: NSManagedObject {
+class Membership: NSManagedObject {
 
-    @NSManaged var membershipCreatedAt: NSDate
-    @NSManaged var membershipUpdatedAt: NSDate
+    @NSManaged var createdAt: NSDate
     @NSManaged var role: String
     @NSManaged var status: String
-    @NSManaged var hasOrganization: NSManagedObject
-    @NSManaged var hasUser: NSManagedObject
+    @NSManaged var updatedAt: NSDate
+    @NSManaged var hasOrganization: Organization
+    @NSManaged var hasUser: User
 
 }

@@ -2,21 +2,21 @@
 //  Organization.swift
 //  CoursesCD
 //
-//  Created by Joan Coyne on 1/22/15.
+//  Created by Joan Coyne on 2/4/15.
 //  Copyright (c) 2015 Mzinga. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-@objc(Organization) class Organization: NSManagedObject {
+class Organization: NSManagedObject {
 
-    @NSManaged var id: String
+    @NSManaged var createdAt: NSDate
+    @NSManaged var id: NSNumber
     @NSManaged var name: String
-    @NSManaged var orgCreatedAt: NSDate
-    @NSManaged var orgUpatedAt: NSDate
     @NSManaged var status: String
     @NSManaged var subdomain: String
+    @NSManaged var upatedAt: NSDate
     @NSManaged var hasMembership: NSSet
 
 }

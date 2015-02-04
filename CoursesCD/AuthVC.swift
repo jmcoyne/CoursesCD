@@ -144,12 +144,14 @@ import CoreData
         if let users = result {
             if users.count == 0 {
                 println("No user here!")
-              //  currentUser = user(entity: userEntity!,
-                   // insertIntoManagedObjectContext: self.managedContext)
-                //currentUser?.firstName = userName
-               // if !managedContext.save(&error) {
-               //     println("Could not save: \(error)")
-               // }
+                currentUser = User(entity: userEntity!,
+                   insertIntoManagedObjectContext: self.managedObjectContext)
+                currentUser?.firstName = self.defaults.stringForKey("firstName")!
+                 currentUser?.lastName = self.defaults.stringForKey("lastName")!
+                currentUser?.id = self.defaults.stringForKey("id")!.toInt()!
+              if self.managedObjectContext?.save(&fetchError) != nil {
+                   println("Could not save: ")
+                }
 
             }
             else{
@@ -158,10 +160,7 @@ import CoreData
             }
         }
         
-        // If he's not, add him
-        // self.addUser()
-        //TODO Get user info, specifically, check for organizations
-
+      
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

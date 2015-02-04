@@ -2,7 +2,7 @@
 //  User.swift
 //  CoursesCD
 //
-//  Created by Joan Coyne on 1/22/15.
+//  Created by Joan Coyne on 2/4/15.
 //  Copyright (c) 2015 Mzinga. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class User: NSManagedObject {
     @NSManaged var createAt: NSDate
     @NSManaged var email: String
     @NSManaged var firstName: String
-    @NSManaged var id: String
+    @NSManaged var id: NSNumber
     @NSManaged var imageURL: String
     @NSManaged var largeImageURL: String
     @NSManaged var lastName: String
