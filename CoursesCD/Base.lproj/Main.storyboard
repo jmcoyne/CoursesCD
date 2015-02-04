@@ -1,25 +1,122 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C106a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8uI-cC-duM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--AuthVC-->
+        <scene sceneID="0pi-qs-CaI">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8uI-cC-duM" customClass="AuthVC" customModule="CoursesCD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="Vg4-Nk-9AP"/>
+                        <viewControllerLayoutGuide type="bottom" id="9uM-pO-K7w"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="TcC-Lq-Nxl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jcoyne@mzinga.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfe-ma-DyA">
+                                <rect key="frame" x="224" y="252" width="153" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="259" y="167" width="84" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="159" y="230" width="84" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="barbershop" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HtG-Lp-D4y">
+                                <rect key="frame" x="224" y="285" width="153" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="259" y="185" width="84" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWR-Kr-Vy4">
+                                <rect key="frame" x="224" y="358" width="153" height="30"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.51764705879999995" green="0.18823529410000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="259" y="258" width="84" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="touchLogin:" destination="8uI-cC-duM" eventType="touchUpInside" id="HBh-IX-pFe"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="mzingaLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Sm9-DY-Nom">
+                                <rect key="frame" x="272" y="156" width="56" height="56"/>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="273" y="85" width="56" height="55"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="173" y="135" width="56" height="55"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.74901960779999999" green="0.92156862750000001" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xfe-ma-DyA" firstAttribute="top" secondItem="Sm9-DY-Nom" secondAttribute="bottom" constant="40" id="070-7p-Z2f">
+                                <variation key="heightClass=compact" constant="27"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="HtG-Lp-D4y" secondAttribute="centerX" constant="-0.5" id="1Hv-J8-xY4"/>
+                            <constraint firstItem="tWR-Kr-Vy4" firstAttribute="top" secondItem="HtG-Lp-D4y" secondAttribute="bottom" constant="43" id="1yl-fB-j8Q">
+                                <variation key="heightClass=compact-widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="xfe-ma-DyA" secondAttribute="centerY" constant="33" id="63E-By-OXf"/>
+                            <constraint firstAttribute="centerX" secondItem="Sm9-DY-Nom" secondAttribute="centerX" id="EIp-gT-JOU"/>
+                            <constraint firstItem="9uM-pO-K7w" firstAttribute="top" secondItem="tWR-Kr-Vy4" secondAttribute="bottom" constant="112" id="Edk-m1-GH6">
+                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="tWR-Kr-Vy4" secondAttribute="centerX" constant="-0.5" id="ItN-3w-YiG"/>
+                            <constraint firstItem="xfe-ma-DyA" firstAttribute="top" secondItem="Sm9-DY-Nom" secondAttribute="bottom" constant="37" id="J9N-W2-GRu"/>
+                            <constraint firstItem="Sm9-DY-Nom" firstAttribute="top" secondItem="Vg4-Nk-9AP" secondAttribute="bottom" constant="95" id="Khs-wG-W9U"/>
+                            <constraint firstAttribute="centerX" secondItem="xfe-ma-DyA" secondAttribute="centerX" constant="-0.5" id="N4E-Fb-keR"/>
+                            <constraint firstItem="HtG-Lp-D4y" firstAttribute="top" secondItem="xfe-ma-DyA" secondAttribute="bottom" constant="3" id="Qxo-rv-Zxs"/>
+                            <constraint firstItem="xfe-ma-DyA" firstAttribute="width" secondItem="HtG-Lp-D4y" secondAttribute="width" id="SK1-Bf-X9l"/>
+                            <constraint firstItem="tWR-Kr-Vy4" firstAttribute="top" secondItem="HtG-Lp-D4y" secondAttribute="bottom" constant="43" id="fgV-bC-T8I"/>
+                            <constraint firstItem="HtG-Lp-D4y" firstAttribute="top" secondItem="xfe-ma-DyA" secondAttribute="bottom" constant="3" id="gGw-IR-rRP"/>
+                            <constraint firstItem="xfe-ma-DyA" firstAttribute="centerX" secondItem="HtG-Lp-D4y" secondAttribute="centerX" id="gUZ-Pf-cfX"/>
+                            <constraint firstItem="HtG-Lp-D4y" firstAttribute="width" secondItem="tWR-Kr-Vy4" secondAttribute="width" id="iBc-5T-ylJ"/>
+                            <constraint firstAttribute="centerY" relation="lessThanOrEqual" secondItem="xfe-ma-DyA" secondAttribute="centerY" constant="33" id="r92-lU-fN6">
+                                <variation key="heightClass=compact" constant="40"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Khs-wG-W9U"/>
+                                <exclude reference="63E-By-OXf"/>
+                                <exclude reference="J9N-W2-GRu"/>
+                                <exclude reference="gUZ-Pf-cfX"/>
+                                <exclude reference="fgV-bC-T8I"/>
+                                <exclude reference="Edk-m1-GH6"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="r92-lU-fN6"/>
+                                <include reference="Edk-m1-GH6"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="0iT-pL-V4V"/>
+                    <connections>
+                        <outlet property="email" destination="xfe-ma-DyA" id="KvV-hg-w7J"/>
+                        <outlet property="password" destination="HtG-Lp-D4y" id="stB-QZ-aTD"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8g-TH-N0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="321"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mzingaLogo" width="56" height="55"/>
+    </resources>
 </document>

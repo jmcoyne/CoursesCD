@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C106a" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Membership" representedClassName="CoursesCD.Membership" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="hasOrganization" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Organization" inverseName="hasMembership" inverseEntity="Organization" syncable="YES"/>
+        <relationship name="hasUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasMembership" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Organization" representedClassName="CoursesCD.Organization" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subdomain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="upatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="hasMembership" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Membership" inverseName="hasOrganization" inverseEntity="Membership" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="CoursesCD.User" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="largeImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mediumImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signInCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="smallImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="xsmallImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasMembership" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Membership" inverseName="hasUser" inverseEntity="Membership" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Membership" positionX="286" positionY="-43" width="128" height="133"/>
+        <element name="Organization" positionX="45" positionY="-423" width="128" height="148"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="283"/>
+    </elements>
 </model>
