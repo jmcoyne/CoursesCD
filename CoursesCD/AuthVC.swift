@@ -16,6 +16,7 @@ import CoreData
     var defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()
     
     
+    
     lazy var defaultConfigObject: NSURLSessionConfiguration = {
         NSURLSessionConfiguration.defaultSessionConfiguration()
         }()
@@ -61,8 +62,11 @@ import CoreData
         var defaultSession: NSURLSession = {
             NSURLSession(configuration: self.defaultConfigObject)
             }()
-        var emailText = self.email.text
-        var passwordText = self.password.text
+        if let emailText = self.email.text {
+            
+        }
+        let passwordText = self.password.text
+        
         
         let urlLogin = NSURL(string: "http://barbershoplabs.ngrok.com/api/v1/users/sign_in")!
         var req = NSMutableURLRequest(URL: urlLogin)
@@ -92,6 +96,7 @@ import CoreData
                     NSLog("Auth Call success = %d", successMessage!)
                     if successMessage == "z3NgdrZjqXngwrumdYi9" {
                         NSLog("We got in!")
+                        
                         self.userDidAuthenticate   = true
                         let userEmail = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_EMAIL)) as? String
                         NSLog("My email is %@", userEmail!)
@@ -177,9 +182,11 @@ import CoreData
         // Pass the selected object to the new view controller.
         //IF this is the Profile button segue, pass the userId
         if segue.identifier == "Profile" {
-            let pvc = segue.destinationViewController as ProfileVC
-            pvc.title = "Profile"
-            println("Segueing to Profile")
+            if let pvc = segue.destinationViewController as? ProfileVC {
+                pvc.title = "Profile"
+                println("Segueing to Profile")
+            }
+            
         }
     }
 

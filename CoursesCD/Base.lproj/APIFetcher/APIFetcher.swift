@@ -16,3 +16,11 @@ let AUTH_RESULTS_LAST_NAME  = "user.last_name"
 let AUTH_RESULTS_AVATAR_URL  = "user.image.image.medium.url"
 let AUTH_RESULTS_SUCCESS  = "user.authentication_token"
 
+let USER_RESULTS_EMAIL  = "user.email"
+let USER_RESULTS_ID  = "user.id"
+let USER_RESULTS_FIRST_NAME  = "user.first_name"
+let USER_RESULTS_LAST_NAME  = "user.last_name"
+let USER_RESULTS_AVATAR_URL  = "user.image.image.medium.url"
+let USER_RESULTS_CITY = "user.city"
+let USER_RESULTS_STATE = "user.state"
+
