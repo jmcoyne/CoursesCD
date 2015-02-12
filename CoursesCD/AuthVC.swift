@@ -88,32 +88,23 @@ import CoreData
                 let httpResponse = response as NSHTTPURLResponse
                 NSLog("Received HTTP \(httpResponse.statusCode)")
                 if httpResponse.statusCode == 200 {
-                    ParseUser(userJSON: data)
-                    }
-                   
-                                           self.userDidAuthenticate   = true
-//                        let userEmail = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_EMAIL)) as? String
-//                        NSLog("My email is %@", userEmail!)
-//                        let userFirstName = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_FIRST_NAME)) as? String
-//                        let userLastName = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_LAST_NAME)) as? String
-//                        let userId = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_ID)) as? NSNumber
-//                        let userAvatarURL = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_AVATAR_URL)) as? String
-//                        let userAuthToken = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_AUTH_TOKEN)) as? String
-//                        NSLog("My authToken is %@", userAuthToken!)
-//                        self.defaults.setObject(userEmail, forKey: "email")
-//                        self.defaults.setObject(userAuthToken, forKey: "authToken")
-//                        self.defaults.setObject(userEmail, forKey: "email")
-//                        self.defaults.setObject(userFirstName, forKey: "firstName")
-//                        self.defaults.setObject(userLastName, forKey: "lastName")
-//                        self.defaults.setObject(userAvatarURL, forKey: "avatarURL")
-//                        self.defaults.setObject(userId, forKey: "id")
-//                        
-//                        
-//                        //self.defaults.synchronize()
-//                         self.setUserProperties()
-                        
-                    }
+                    let json = JSON(data: data)
+                    var id: String? = json["user"]["id"].stringValue
+                    var userEmail: String? = json["user"]["email"].stringValue
+                    var signInCount: String? = json["user"]["sign_in_count"].stringValue
+                    var firstName: String? = json["user"]["first_name"].stringValue
+                    var lastName: String? = json["user"]["last_name"].stringValue
+                    var city: String? = json["user"]["city"].stringValue
+                    var state: String? = json["user"]["state"].stringValue
+                    var createdAt: String? = json["user"]["created_at"].stringValue
+                    var updatedAt: String? = json["user"]["updated_at"].stringValue
+                    var imageURL: String? = json["user"]["image"]["image"]["url"].stringValue
+                    var xsmallURL: String? = json["user"]["image"]["image"]["xsmall"]["url"].stringValue
+                    var smallURL: String? = json["user"]["image"]["image"]["small"]["url"].stringValue
+                    var mediumURL: String? = json["user"]["image"]["image"]["medium"]["url"].stringValue
+                    var largeURL: String? = json["user"]["image"]["image"]["large"]["url"].stringValue               }
                     else {
+                    //response not 200
                         self.userDidAuthenticate   = false;
                     }
                     
@@ -121,10 +112,7 @@ import CoreData
                 } else {
                     NSLog("Don't know how to handle response: \(response)")
                 }
-            } else {
-                NSLog("Error: \(error)")
             }
-        }
         
         task.resume()
     }

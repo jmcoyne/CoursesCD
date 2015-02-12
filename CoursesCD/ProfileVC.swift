@@ -69,17 +69,17 @@ import UIKit
         let passwordText = "barbershop"
         
         
-        let urlLogin = NSURL(string: "http://barbershoplabs.ngrok.com/api/v1/users/4")!
+        let urlLogin = NSURL(string: "http://barbershoplabs.ngrok.com/api/v1/users/4&authentication_token=z3NgdrZjqXngwrumdYi9")!
         var req = NSMutableURLRequest(URL: urlLogin)
         
         
         
         // var reqParams:NSString = "email=\(emailText)&password=\(passwordText)&submit=true"
-        var reqParams:NSString = "email=jcoyne@mzinga.com&password=barbershop&authentication_token=z3NgdrZjqXngwrumdYi9"
-        NSLog("PostData: %@",reqParams)
+        //var reqParams:NSString = "email=jcoyne@mzinga.com&password=barbershop&authentication_token=z3NgdrZjqXngwrumdYi9"
+        //NSLog("PostData: %@",reqParams)
         req.HTTPMethod = "GET"
-        var reqParamsData:NSData = reqParams.dataUsingEncoding(NSASCIIStringEncoding)!
-        req.HTTPBody = reqParamsData
+        //var reqParamsData:NSData = reqParams.dataUsingEncoding(NSASCIIStringEncoding)!
+        //req.HTTPBody = reqParamsData
         
         NSLog("Sending request for \(req.URL)")
         var task = self.defaultSession.dataTaskWithRequest(req) {
