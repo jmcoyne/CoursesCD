@@ -53,6 +53,7 @@ import UIKit
             //city.text = defaults.stringForKey("city")
             // state.text = defaults.stringForKey("state")
             self.httpGetWithCustomDelegate()
+          
         }
     
     }
@@ -86,34 +87,28 @@ import UIKit
                 let httpResponse = response as NSHTTPURLResponse
                 NSLog("Received HTTP \(httpResponse.statusCode)")
                 if httpResponse.statusCode == 200 {
-                    let body = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    NSLog("Response from \(req.URL): \(body)")
-                    self.authCallResults = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: &error) as? NSDictionary
-                    NSLog("Auth Call results = %@", self.authCallResults!);
-                    let successMessage = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_SUCCESS)) as? String
-                    NSLog("Auth Call success = %d", successMessage!)
-                    if successMessage == "z3NgdrZjqXngwrumdYi9" {
-                        NSLog("We got in!")
-                        
-                       
-                        let userEmail = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_EMAIL)) as? String
-                        NSLog("My email is %@", userEmail!)
-                        let userFirstName = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_FIRST_NAME)) as? String
-                        let userLastName = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_LAST_NAME)) as? String
-                        let userId = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_ID)) as? NSNumber
-                        let userAvatarURL = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_AVATAR_URL)) as? String
-                        let userAuthToken = (self.authCallResults?.valueForKeyPath(AUTH_RESULTS_AUTH_TOKEN)) as? String
-                        NSLog("My authToken is %@", userAuthToken!)
-                        
-                        
-                       
-                        
-                    }
-                    else {
-                       println("Oops")
-                    }
+                    let  json = JSON(data:  data)
                     
-                    // NSLog("Response:%@ %@\n", response, error);
+                        let id: String? = json["user"]["id"].stringValue
+                        let userEmail: String? = json["user"]["email"].stringValue
+                        let signInCount: String? = json["user"]["sign_in_count"].stringValue
+                        let firstName: String? = json["user"]["first_name"].stringValue
+                        let lastName: String? = json["user"]["last_name"].stringValue
+                        let city: String? = json["user"]["city"].stringValue
+                        let state: String? = json["user"]["state"].stringValue
+                        let createdAt: String? = json["user"]["created_at"].stringValue
+                        let updatedAt: String? = json["user"]["updated_at"].stringValue
+                        let imageURL: String? = json["user"]["image"]["image"]["url"].stringValue
+                        let xsmallURL: String? = json["user"]["image"]["image"]["xsmall"]["url"].stringValue
+                        let smallURL: String? = json["user"]["image"]["image"]["small"]["url"].stringValue
+                        let mediumURL: String? = json["user"]["image"]["image"]["medium"]["url"].stringValue
+                        let largeURL: String? = json["user"]["image"]["image"]["large"]["url"].stringValue
+                    
+                 
+                   self.city.text = city
+                    self.state.text = state
+                    
+                    
                 } else {
                     NSLog("Don't know how to handle response: \(response)")
                 }
