@@ -52,25 +52,22 @@ import UIKit
             
             //city.text = defaults.stringForKey("city")
             // state.text = defaults.stringForKey("state")
-            self.httpPostWithCustomDelegate()
+            self.httpGetWithCustomDelegate()
         }
     
     }
-    func httpPostWithCustomDelegate() {
+    func httpGetWithCustomDelegate() {
         // retries when connection has been terminated, avoids request if battery islowor wifi performance is not good
         defaultConfigObject.discretionary = true
         
         var defaultSession: NSURLSession = {
             NSURLSession(configuration: self.defaultConfigObject)
             }()
-        if let emailText = self.email.text {
-            
-        }
-        let passwordText = "barbershop"
+       
         
         
-        let urlLogin = NSURL(string: "http://barbershoplabs.ngrok.com/api/v1/users/4&authentication_token=z3NgdrZjqXngwrumdYi9")!
-        var req = NSMutableURLRequest(URL: urlLogin)
+        let urlGetUser = NSURL(string: "http://barbershoplabs.ngrok.com/api/v1/users/4?authentication_token=z3NgdrZjqXngwrumdYi9")!
+        var req = NSMutableURLRequest(URL: urlGetUser)
         
         
         
