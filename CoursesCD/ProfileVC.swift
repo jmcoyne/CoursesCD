@@ -28,7 +28,9 @@ import UIKit
         }()
 
     
-    
+    override func viewWillAppear(animated: Bool) {
+         self.httpGetWithCustomDelegate()
+    }
     
     
     
@@ -52,7 +54,7 @@ import UIKit
             
             //city.text = defaults.stringForKey("city")
             // state.text = defaults.stringForKey("state")
-            self.httpGetWithCustomDelegate()
+          
           
         }
     
@@ -103,7 +105,34 @@ import UIKit
                         let smallURL: String? = json["user"]["image"]["image"]["small"]["url"].stringValue
                         let mediumURL: String? = json["user"]["image"]["image"]["medium"]["url"].stringValue
                         let largeURL: String? = json["user"]["image"]["image"]["large"]["url"].stringValue
-                    
+                    if let membershipArray = json["user"]["memberships"].arrayValue {
+                        //2
+                        
+                        
+                        //3
+                        for membershipDict in membershipArray {
+                            var membershipStatus: String? = membershipDict["status"].stringValue
+                            var membershipRole: String? = membershipDict["role"].stringValue
+                            var membershipCreatedAt: String? = membershipDict["created_at"].stringValue
+                            var membershipUpdatedAt: String? = membershipDict["updated_at"].stringValue
+                            var orgName: String? = membershipDict["organization"]["name"].stringValue
+                            var orgId: String? = membershipDict["organization"]["id"].stringValue
+                            var orgSubdomain: String? = membershipDict["organization"]["subdomain"].stringValue
+                            var orgStatus: String? = membershipDict["organization"]["status"].stringValue
+                            var orgCreatedAt: String? = membershipDict["organization"]["created_at"].stringValue
+                            var orgUpdatedAt: String? = membershipDict["organization"]["updated_at"].stringValue
+                            
+                          //  var org = Organization(id: orgId!, name: orgName!, subdomain: orgSubdomain!, status: orgStatus!, createdAt: orgCreatedAt!, updatedAt: orgUpdatedAt!)
+                         //   self.organizations.append(org)
+                          //  let membership = Membership(status: membershipStatus, role: membershipRole, createdAt: membershipCreatedAt, updatedAt: membershipUpdatedAt, organization: org);
+                            
+                        }
+                        
+                        
+                        
+                        
+                        
+                    }
                  
                    self.city.text = city
                     self.state.text = state
