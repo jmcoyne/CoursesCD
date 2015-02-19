@@ -19,7 +19,12 @@ import UIKit
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var state: UITextField!
     
-     var authCallResults:NSDictionary?
+    var authCode = NSString()
+    var id = NSNumber()
+
+    let defaults = NSUserDefaults.standardUserDefaults()
+
+    
     lazy var defaultConfigObject: NSURLSessionConfiguration = {
         NSURLSessionConfiguration.defaultSessionConfiguration()
         }()
@@ -38,14 +43,9 @@ import UIKit
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let id = defaults.stringForKey("id")
-        {
-            println(id)
-            firstName.text = defaults.stringForKey("firstName")
-            lastName.text = defaults.stringForKey("lastName")
-            email.text = defaults.stringForKey("email")
-            let authCode = defaults.stringForKey("authToken")!
+           // id = defaults.integerForKey(numberForKey("id")
+            //println(id)
+            //authCode = defaults.stringForKey("authToken")
             
             //TODO add API call to get all user data
             
@@ -56,7 +56,7 @@ import UIKit
             // state.text = defaults.stringForKey("state")
           
           
-        }
+       
     
     }
     func httpGetWithCustomDelegate() {

@@ -1,3 +1,4 @@
+
 //
 //  AuthVC.swift
 //  CoursesCD
@@ -13,7 +14,7 @@ import CoreData
     
     //We will put the results of the auth call into user defaults
     var authCallResults:NSDictionary?
-    var defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()
+     var defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()    
     
     
     
@@ -34,7 +35,8 @@ import CoreData
             return nil
         }
         }()
-     var currentUser: User?
+     var currentUser: User!
+   
 
    
    
@@ -88,21 +90,63 @@ import CoreData
                 let httpResponse = response as NSHTTPURLResponse
                 NSLog("Received HTTP \(httpResponse.statusCode)")
                 if httpResponse.statusCode == 200 {
+                    self.userDidAuthenticate = true
+                    
+                    //It looks like the encoding is messing up the auth token? grab it directly
+                    let authCallResults = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: &error) as? NSDictionary
+                    if let authToken = (authCallResults?.valueForKeyPath(AUTH_RESULTS_AUTH_TOKEN)) as? String {
+                         self.defaults.setObject(authToken, forKey: "authToken")
+                    }
+                    
+                    
+
                     let json = JSON(data: data)
-                    var id: String? = json["user"]["id"].stringValue
-                    var userEmail: String? = json["user"]["email"].stringValue
-                    var signInCount: String? = json["user"]["sign_in_count"].stringValue
-                    var firstName: String? = json["user"]["first_name"].stringValue
-                    var lastName: String? = json["user"]["last_name"].stringValue
-                    var city: String? = json["user"]["city"].stringValue
-                    var state: String? = json["user"]["state"].stringValue
-                    var createdAt: String? = json["user"]["created_at"].stringValue
-                    var updatedAt: String? = json["user"]["updated_at"].stringValue
-                    var imageURL: String? = json["user"]["image"]["image"]["url"].stringValue
-                    var xsmallURL: String? = json["user"]["image"]["image"]["xsmall"]["url"].stringValue
-                    var smallURL: String? = json["user"]["image"]["image"]["small"]["url"].stringValue
-                    var mediumURL: String? = json["user"]["image"]["image"]["medium"]["url"].stringValue
-                    var largeURL: String? = json["user"]["image"]["image"]["large"]["url"].stringValue               }
+                    if let id = json["user"]["id"].numberValue {
+                        // Add the id to user defaults 
+                        self.defaults.setObject(id, forKey: "id")
+                        self.defaults.synchronize()
+                      //We got in and have an id, now check for the user
+                        let userEntity = NSEntityDescription.entityForName("User", inManagedObjectContext: self.managedObjectContext!)
+                        let user  = User(entity: userEntity!, insertIntoManagedObjectContext: self.managedObjectContext)
+                        
+                        let userFetch = NSFetchRequest(entityName: "User")
+                        userFetch.predicate = NSPredicate(format: "id = \(id)")
+                        var error: NSError?
+                        let result = self.managedObjectContext!.executeFetchRequest(userFetch, error: &error) as [User]?
+                        if let users = result {
+                            if users.count == 0 {
+                             println(" hey I'm new")
+                           self.currentUser = User(entity: userEntity!, insertIntoManagedObjectContext: self.managedObjectContext)
+                            if let userEmail = json["user"]["email"].stringValue {  self.currentUser.email = userEmail }
+                                                        if let signInCount = json["user"]["sign_in_count"].numberValue { self.currentUser.signInCount = signInCount }
+                            if let firstName = json["user"]["first_name"].stringValue { self.currentUser.firstName = firstName }
+                            if let lastName = json["user"]["last_name"].stringValue { self.currentUser.lastName = lastName }
+                            if let city = json["user"]["city"].stringValue { self.currentUser.city = city }
+                            if let state = json["user"]["state"].stringValue { self.currentUser.state = state  }
+                            //Thise need to be converted todates.  SKipping for now
+                            //if let createdAt = json["user"]["created_at"].stringValue
+                            // if let updatedAt = json["user"]["updated_at"].stringValue
+                            if let imageURL = json["user"]["image"]["image"]["url"].stringValue {  self.currentUser.imageURL = imageURL }
+                            if let xsmallURL = json["user"]["image"]["image"]["xsmall"]["url"].stringValue {  self.currentUser.xsmallImageURL = xsmallURL }
+                            if let smallURL = json["user"]["image"]["image"]["small"]["url"].stringValue { self.currentUser.smallImageURL = smallURL }
+                            if let mediumURL = json["user"]["image"]["image"]["medium"]["url"].stringValue { self.currentUser.mediumImageURL  = mediumURL }
+                            if let largeURL = json["user"]["image"]["image"]["large"]["url"].stringValue { self.currentUser.largeImageURL = largeURL }
+                            if !self.managedObjectContext!.save(&error) {
+                                println("Could not save: \(error)")
+                            }
+                        } else {
+                            self.currentUser = users[0]
+                            println(" hey I'm a user")
+                            }
+                        } else {
+                            println("Could not fetch: \(error)")
+                        }
+
+                    }
+                    
+                    
+                    
+                }
                     else {
                     //response not 200
                         self.userDidAuthenticate   = false;
@@ -115,7 +159,7 @@ import CoreData
             }
         
         task.resume()
-    }
+           }
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
